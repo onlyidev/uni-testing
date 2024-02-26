@@ -1,8 +1,12 @@
 pipeline {
     agent any
-    stage('Test') {
-        steps {
-            sh './gradlew test --stacktrace'
+    stages {
+        stage('Test') {
+            steps {
+                script {
+                    sh './gradlew test --stacktrace'
+                }
+            }
         }
     }
 }
