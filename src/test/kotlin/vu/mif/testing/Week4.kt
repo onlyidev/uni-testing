@@ -1,13 +1,17 @@
 package vu.mif.testing
 
+import com.codeborne.selenide.Configuration
 import com.codeborne.selenide.Selectors.byId
 import com.codeborne.selenide.Selectors.byXpath
+import com.codeborne.selenide.Selenide
 import com.codeborne.selenide.Selenide.*
 import net.bytebuddy.asm.Advice.Enter
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.openqa.selenium.Keys
+import org.openqa.selenium.chrome.ChromeOptions
 import java.io.File
 import java.time.Duration
 import kotlin.random.Random
@@ -21,6 +25,9 @@ class Week4 {
         @JvmStatic
         @BeforeAll
         fun createUser(): Unit {
+            Configuration.browserCapabilities = ChromeOptions().apply {
+                addArguments("--headless")
+            }
             email = "someuser${Random.nextInt()}${Random.nextInt()}@lol.com"
             open("https://demowebshop.tricentis.com")
             S(byXpath("/html/body/div[4]/div[1]/div[1]/div[2]/div[1]/ul/li[2]/a")).click()
@@ -36,6 +43,13 @@ class Week4 {
             webdriver().driver().webDriver.quit() // Close session
             Thread.interrupted()
 
+        }
+    }
+
+    @BeforeEach
+    fun configDriver() {
+        Configuration.browserCapabilities = ChromeOptions().apply {
+            addArguments("--headless")
         }
     }
 
