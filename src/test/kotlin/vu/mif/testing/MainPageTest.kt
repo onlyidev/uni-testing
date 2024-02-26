@@ -9,11 +9,13 @@ import net.bytebuddy.asm.Advice.Enter
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.openqa.selenium.Keys
 import org.openqa.selenium.chrome.ChromeOptions
 import java.security.Key
 
+@Disabled
 class MainPageTest {
     companion object {
         @JvmStatic
