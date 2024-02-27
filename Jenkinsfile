@@ -4,7 +4,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh './gradlew cleanTest test --stacktrace'
+                    sh './gradlew cleanTest test --info'
                 }
             }
         }
